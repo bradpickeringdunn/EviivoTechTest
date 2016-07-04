@@ -1,6 +1,8 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using NLog;
+using TextMatch.Domain;
 
 namespace TextMatch.Web.App_Start
 {
@@ -36,7 +38,8 @@ namespace TextMatch.Web.App_Start
             // container.LoadConfiguration();
 
             // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<NLog.ILogger>(new InjectionFactory(f => LogManager.GetCurrentClassLogger(typeof(Logger))));
+            container.RegisterType<ITextMatch, TextMatch.Domain.TextMatch>();
         }
     }
 }

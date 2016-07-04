@@ -29,9 +29,16 @@
             @if (Model != null && Model.Output != null && Model.Output.Any())
             {
                 <h1>Output</h1>
-                foreach(var output in Model.Output)
+                if (Model.Output.Any())
                 {
+                    foreach (var output in Model.Output)
+                    {
                     @output <span>,</span>
+                    }
+                }
+                else
+                {
+                    There is no output
                 }
             }
         </div>
